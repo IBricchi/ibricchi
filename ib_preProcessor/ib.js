@@ -86,12 +86,16 @@ function ib_command(parser, variables, line){
     switch (tokens[0]) {
         case "for":
             return ib_command_for(parser, variables, tokens);
+        case "foreach":
+            return ib_command_foreach(parser, variables, tokens);
         default:
             return "";
     }
 }
 
 function ib_command_for(parser, variables, tokens){
+    if(tokens.length < 6) return null;
+
     let loopVariables = tokens[1].split(",");
     let loopCompVar = tokens[2];
     let loopCompComp = tokens[3];
@@ -135,7 +139,7 @@ function ib_command_for(parser, variables, tokens){
 
     let nextLine = parser.peek();
 
-    while(nextLine != null & (nextLine[0] != "$" || nextLine.slice(1).trim() != "end_for")){
+    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
         lines.push(parser.advance());
         nextLine = parser.peek();
     }
@@ -147,6 +151,50 @@ function ib_command_for(parser, variables, tokens){
             html.push(ib_line(parser, variables, line));
         });
         doEnd();
+    }
+
+    html = html.join("\n");
+    return html;
+}
+
+function ib_command_foreach(parser, variables, tokens){
+    let loopVar = tokens[1];
+    let loopArray = ib_inline_var(variables, tokens[2]);
+    let loopModifier = tokens[3];
+
+    lines = [];
+
+    let nextLine = parser.peek();
+
+    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+        lines.push(parser.advance());
+        nextLine = parser.peek();
+    }
+
+    switch(loopModifier){
+        case "reversed":
+            loopArray = loopArray.reverse();
+            break;
+        case "alphabetical":
+            loopArray = loopArray.sort();
+        case "alphareversed":
+            loopArray = loopArray.sort().reverse();
+        case "increasing":
+            loopArray = loopArray.sort(function(a, b){return a - b});
+        case "decreasing":
+            loopArray = loopArray.sort(function(a, b){return b - a});
+        case "random":
+            loopArrau = loopArray.sort(function(a, b){return a - Math.random()});
+        default:
+            break;
+    }
+
+    let html = [];
+    for(let i = 0; i < loopArray.length; i++){
+        variables[loopVar] = loopArray[i];
+        lines.forEach(line => {
+            html.push(ib_line(parser, variables, line));
+        })
     }
 
     html = html.join("\n");

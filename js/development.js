@@ -1,7 +1,8 @@
 let project = window.location.hash;
 
 let variables = {
-    "test": ["a", "b", "c", "d"]
+    "x": [Math.random(),Math.random(),Math.random(),Math.random(),Math.random()],
+    "y": [Math.random(),Math.random(),Math.random(),Math.random(),Math.random()]
 }
 
 if(project == ""){
