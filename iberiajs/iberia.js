@@ -103,7 +103,14 @@ function ib_command_for(parser, variables, tokens){
     let loopVariables = tokens[1].split(",");
     let loopCompVar = tokens[2];
     let loopCompComp = tokens[3];
+    
     let loopCompConst = tokens[4];
+    if(loopCompConst[0] == "#"){
+        loopCompConst = ib_inline_var(variables, loopCompConst.slice(1));
+    }else{
+        loopCompConst = parseFloat(loopCompConst);
+    }
+
     let loopEnd = tokens[5].split(",");
 
     for(let i = 0; i < loopVariables.length; i++){

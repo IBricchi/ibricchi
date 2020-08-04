@@ -9,6 +9,10 @@
     --pop: #D0DB97;
 }
 
+#main-logo{
+  /* min-width: 5vw; */
+}
+
 .lds-ripple {
     display: inline-block;
     position: relative;

@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="css/development.css">
     
     <script src="uikit-3.5.5/js/uikit.min.js"></script>
-    <script src="ib_preProcessor/ib.js"></script>
+    <script src="iberiajs/iberia.js"></script>
+    <script src="js/base.js"></script>
 
     <title>IBricchi</title>
 </head>
@@ -17,10 +18,10 @@
     <div class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-center">
             <ul class="uk-navbar-nav">
-                <li class="uk-active"><a href="#">Development</a></li>
+                <li class="uk-active"><a onclick="load_page('')">Development</a></li>
                 <li><a>Blog</a></li>
                 <a href="/" class="uk-navbar-item uk-logo">
-                    <img src="src/img/logo_1.svg" alt="Logo">
+                    <img id="main-logo" src="src/img/logo_1.svg" alt="Logo">
                 </a>
                 <li><a>About</a></li>
                 <li><a>Contact</a></li>
@@ -28,9 +29,7 @@
         </div>
     </div>
     
-    <div id="devMain" class="uk-section uk-section-default">
-        <div class="lds-ripple"><div></div><div></div><div></div></div>
-    </div>    
+    <div id="devMain" class="uk-section uk-section-default"></div>    
 </body>
 
 <script src="js/development.js"></script>
