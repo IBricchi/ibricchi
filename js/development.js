@@ -1,8 +1,14 @@
 let project = window.location.hash;
 
+function getRandom() {
+    let max = 400;
+    let min = 200;
+    return min + Math.floor(Math.random() * Math.floor(max-min));
+  }
+
 let variables = {
-    "x": [Math.random(),Math.random(),Math.random(),Math.random(),Math.random()],
-    "y": [Math.random(),Math.random(),Math.random(),Math.random(),Math.random()]
+    "x": [getRandom(), getRandom(), getRandom(), getRandom(), getRandom()],
+    "y": [getRandom(), getRandom(), getRandom(), getRandom(), getRandom()]
 }
 
 if(project == ""){

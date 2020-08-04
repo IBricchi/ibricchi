@@ -53,6 +53,10 @@ class ib_parser{
         return this.lines[this.current];
     }
 
+    goto(a){
+        this.current = a;
+    }
+
 }
 
 function ib_pre_process(variables, text){
@@ -135,21 +139,16 @@ function ib_command_for(parser, variables, tokens){
         });
     }
 
-    lines = [];
-
-    let nextLine = parser.peek();
-
-    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
-        lines.push(parser.advance());
-        nextLine = parser.peek();
-    }
-
     let html = [];
+    let start = parser.current;
 
     while(checkCondition()){
-        lines.forEach(line => {
-            html.push(ib_line(parser, variables, line));
-        });
+        parser.goto(start);
+        let nextLine = parser.advance();
+        while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+            html.push(ib_line(parser, variables, nextLine));
+            nextLine = parser.advance();
+        }
         doEnd();
     }
 
