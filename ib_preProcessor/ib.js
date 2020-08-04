@@ -161,15 +161,6 @@ function ib_command_foreach(parser, variables, tokens){
     let loopArray = ib_inline_var(variables, tokens[2]);
     let loopModifier = tokens[3];
 
-    lines = [];
-
-    let nextLine = parser.peek();
-
-    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
-        lines.push(parser.advance());
-        nextLine = parser.peek();
-    }
-
     switch(loopModifier){
         case "reversed":
             loopArray = loopArray.reverse();
@@ -189,11 +180,16 @@ function ib_command_foreach(parser, variables, tokens){
     }
 
     let html = [];
+    let start = parser.current;
+
     for(let i = 0; i < loopArray.length; i++){
         variables[loopVar] = loopArray[i];
-        lines.forEach(line => {
-            html.push(ib_line(parser, variables, line));
-        })
+        parser.goto(start);
+        let nextLine = parser.advance();
+        while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+            html.push(ib_line(parser, variables, nextLine));
+            nextLine = parser.advance();
+        }
     }
 
     html = html.join("\n");

@@ -7,6 +7,8 @@ function getRandom() {
   }
 
 let variables = {
+    "a": [0,1,2,3,4],
+    "b": [0,1],
     "x": [getRandom(), getRandom(), getRandom(), getRandom(), getRandom()],
     "y": [getRandom(), getRandom(), getRandom(), getRandom(), getRandom()]
 }
