@@ -202,7 +202,7 @@ function ib_inline_var(variables, name){
 }
 
 function ib_inline_command(variables, name){
-    let tokens = name.split(" ");
+    let tokens = name.trim().split(" ");
     switch(tokens[0]){
         case "array":
             return ib_inline_array(tokens, variables, name);
