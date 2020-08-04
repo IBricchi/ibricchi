@@ -220,7 +220,7 @@ function ib_inline_array(tokens, variables, name){
         array_index = ib_inline_var(variables, array_index.slice(1));
     }
 
-    if(!array_name in variables) return "null";
-    if(!array_index in variables[array_name]) return "null";
+    if(!(array_name in variables)) return "null";
+    if(!(array_index in variables[array_name])) return "null";
     return variables[array_name][array_index];
 }
