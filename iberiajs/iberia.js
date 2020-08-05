@@ -136,9 +136,15 @@ async function ib_command(parser, variables, line){
             return await ib_command_foreach(parser, variables, tokens);
         case "load":
             return await ib_command_load(parser, variables, tokens)
+        case "define":
+            await ib_command_define(parser, variables, tokens);                
+            break;
+        case "var":
+            return await ib_command_var(parser, variables, tokens);
         default:
             return "";
     }
+    return "";
 }
 
 async function ib_command_for(parser, variables, tokens){
@@ -261,6 +267,31 @@ async function ib_command_load(parser, variables, tokens){
         default:
             return ib_get_file(loadPath);
     }
+}
+
+async function ib_command_define(parser, variables, tokens){
+    if(tokens.length < 2) return "null";
+
+    let name = ib_string(variables, tokens[1]);
+
+    let html = [];
+    let nextLine = parser.advance();
+    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+        html.push(await ib_line(parser, variables, nextLine));
+        nextLine = parser.advance();
+    }
+    html = html.join("\n");
+    variables[name] = html;
+}
+
+async function ib_command_var(parser, variables, tokens){
+    if(tokens.length < 2) return "null";
+
+    let name = ib_string(variables, tokens[1]);
+
+    html = variables[name];
+    html = html==undefined?"null":html;
+    return html;
 }
 
 function ib_html(variables, line){

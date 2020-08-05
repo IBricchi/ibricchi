@@ -32,7 +32,7 @@ async function load_proj(name){
         // console.log("test");
     }
 
-    let variables = {};
+    let variables = new Map();
     variables["name"]=info[name]["name"];
     variables["project"]=name;
     variables["icon"]=info[name]["icon"];
@@ -43,7 +43,7 @@ async function load_proj(name){
 }
 
 async function load_def(){    
-    let variables = {
+    let variables = new Map({
         "fav_count": 0,
         "fav_names": [],
         "fav_projects": [],
@@ -52,7 +52,7 @@ async function load_def(){
         "names": [],
         "projects": [],
         "icons": []
-    };
+    });
     
     Object.keys(info).forEach(key => {
         variables["count"]++;
