@@ -116,6 +116,8 @@ function ib_string(variables, str){
             i = end;
 
             let name = str.slice(start + 1, end);
+            let value = variables[name];
+            value = value==undefined?"null":value;
             newString.push(variables[name]);
         }
         else{
