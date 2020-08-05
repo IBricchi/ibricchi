@@ -17,10 +17,23 @@ async function ib_get_ib_html(path, variables){
 }
 
 async function ib_get_file(path){
-    let response = await fetch(path);
-    let html = await response.text();
+    if(typeof(fetch)!="undefined"){
+        let response = await fetch(path);
+        return response.text();
+    }
 
-    return html;
+    return new Promise(function(resolve){
+        let xhr = new XMLHttpRequest();
+        xhr.open("GET", path, true);
+        xhr.onload = function(){
+            resolve(xhr.response);
+        };
+        xhr.onerror = function(){
+            resolve(undefined);
+            console.error("** An error occurred during the XMLHttpRequest");
+        }
+        xhr.send();
+    })
 }
 
 class ib_parser{
