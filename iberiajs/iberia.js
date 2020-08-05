@@ -37,10 +37,8 @@ async function ib_get_file(path){
 }
 
 class ib_parser{
-    lines = [];
-    current = 0;
-
     constructor(input_file){
+        this.current = 0;
         this.lines = input_file.split("\n");
         for(let i = 0; i < this.lines.length; i++){
             this.lines[i] = this.lines[i].trim();
