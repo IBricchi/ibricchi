@@ -29,7 +29,6 @@ async function load_page(project_name){
 async function load_proj(name){
     if(info[name] == undefined){
         window.location.replace("/404.html");
-        // console.log("test");
     }
 
     let variables = new Map();

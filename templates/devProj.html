@@ -17,8 +17,8 @@
     <div class="uk-comment-body">
         $define loader
         $load /src/data/dev/#project#/main.html ib_html
-        $end
-        $var loader
+        $end_define
+        $var loader ib_html
         $for i i < 2 i+=1
         <p>$i$</p>
         $end

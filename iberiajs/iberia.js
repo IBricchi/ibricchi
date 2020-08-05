@@ -286,8 +286,8 @@ async function ib_command_define(parser, variables, tokens){
 
     let html = [];
     let nextLine = parser.advance();
-    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
-        html.push(await ib_line(parser, variables, nextLine));
+    while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end_define")){
+        html.push(nextLine);
         nextLine = parser.advance();
     }
     html = html.join("\n");
@@ -298,10 +298,19 @@ async function ib_command_var(parser, variables, tokens){
     if(tokens.length < 2) return "null";
 
     let name = ib_string(variables, tokens[1]);
+    let special = tokens.length<2?"":tokens[2];
 
     html = variables[name];
-    html = html==undefined?"null":html;
-    return html;
+    if(html == null) return "null";
+
+    switch (special) {
+        case "ib_html":
+            return await ib_pre_process(ib_scope_map(variables), html);
+        case "unscoped_ib_html":
+            return await ib_pre_process(variables, html);
+        default:
+            return html;
+    }
 }
 
 function ib_html(variables, line){
