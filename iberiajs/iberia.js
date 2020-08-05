@@ -37,7 +37,7 @@ async function ib_get_file(path){
 }
 
 class ib_parser{
-    lines;
+    lines = [];
     current = 0;
 
     constructor(input_file){
