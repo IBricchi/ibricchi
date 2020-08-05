@@ -9,9 +9,8 @@ async function ib_insert_file(path, destination){
 }
 
 async function ib_get_ib_html(path, variables){
-    let response = await fetch(path);
-    let html = await response.text();
-    html = ib_pre_process(variables, html);
+    let html = await ib_get_file(path);
+    html = await ib_pre_process(variables, html);
 
     return html;
 }
@@ -70,23 +69,23 @@ class ib_parser{
 
 }
 
-function ib_pre_process(variables, text){
+async function ib_pre_process(variables, text){
     let parser = new ib_parser(text);
     
     let html = [];
 
     while(!parser.is_at_end()){
         let line = parser.advance();
-        html.push(ib_line(parser, variables, line));
+        html.push(await ib_line(parser, variables, line));
     }
 
     html = html.join("\n");
     return html;
 }
 
-function ib_line(parser, variables, line){
+async function ib_line(parser, variables, line){
     if(line[0] == "$"){
-        return ib_command(parser, variables, line.slice(1).trim());
+        return await ib_command(parser, variables, line.slice(1).trim());
     }
 
     if(line[0] == "\\" && line[1] == "$"){
@@ -96,19 +95,51 @@ function ib_line(parser, variables, line){
     return ib_html(variables, line);
 }
 
-function ib_command(parser, variables, line){
+function ib_string(variables, str){
+    let newString = [];
+    for(let i = 0; i < str.length; i++){
+        if(i + 1 < str.length && str[i] == "\\" && str[i+1] == "#"){
+            newString.push("#");
+            i++;
+        }
+        else if(str[i] == "#"){
+            start = i;
+            end = i+1;
+            while(end < str.length && str[end] != "#"){
+                if(end + 1 < str.length && str[end]=="\\" && str[end + 1] == "#"){
+                    str = str.slice(0, end) + str.slice(end + 1);
+                    end++;
+                }
+                end++;
+            }
+
+            i = end;
+
+            let name = str.slice(start + 1, end);
+            newString.push(variables[name]);
+        }
+        else{
+            newString.push(str[i]);
+        }
+    }
+    return newString.join("");
+}
+
+async function ib_command(parser, variables, line){
     tokens = line.split(" ");
     switch (tokens[0]) {
         case "for":
-            return ib_command_for(parser, variables, tokens);
+            return await ib_command_for(parser, variables, tokens);
         case "foreach":
-            return ib_command_foreach(parser, variables, tokens);
+            return await ib_command_foreach(parser, variables, tokens);
+        case "load":
+            return await ib_command_load(parser, variables, tokens)
         default:
             return "";
     }
 }
 
-function ib_command_for(parser, variables, tokens){
+async function ib_command_for(parser, variables, tokens){
     if(tokens.length < 6) return null;
 
     let loopVariables = tokens[1].split(",");
@@ -164,7 +195,7 @@ function ib_command_for(parser, variables, tokens){
         parser.goto(start);
         let nextLine = parser.advance();
         while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
-            html.push(ib_line(parser, variables, nextLine));
+            html.push(await ib_line(parser, variables, nextLine));
             nextLine = parser.advance();
         }
         doEnd();
@@ -174,10 +205,12 @@ function ib_command_for(parser, variables, tokens){
     return html;
 }
 
-function ib_command_foreach(parser, variables, tokens){
+async function ib_command_foreach(parser, variables, tokens){
+    if(tokens.length < 3) return "null";
+
     let loopVar = tokens[1];
     let loopArray = ib_inline_var(variables, tokens[2]);
-    let loopModifier = tokens[3];
+    let loopModifier = tokens.length<3?"":tokens[3];
 
     switch(loopModifier){
         case "reversed":
@@ -205,13 +238,27 @@ function ib_command_foreach(parser, variables, tokens){
         parser.goto(start);
         let nextLine = parser.advance();
         while(nextLine != null && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
-            html.push(ib_line(parser, variables, nextLine));
+            html.push(await ib_line(parser, variables, nextLine));
             nextLine = parser.advance();
         }
     }
 
     html = html.join("\n");
     return html;
+}
+
+async function ib_command_load(parser, variables, tokens){
+    if(tokens.length < 2) return "null";
+
+    let loadPath = ib_string(variables, tokens[1]);
+    let loadType = tokens.length<2?"":tokens[2];
+
+    switch (loadType) {
+        case "ib_html":
+            return ib_get_ib_html(loadPath, variables);
+        default:
+            return ib_get_file(loadPath);
+    }
 }
 
 function ib_html(variables, line){
