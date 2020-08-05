@@ -127,6 +127,14 @@ function ib_string(variables, str){
     return newString.join("");
 }
 
+function ib_scope_map(variables){
+    var newMap = new Map();
+    Object.keys(variables).forEach(key => {
+        newMap[key] = variables[key];
+    })
+    return newMap;
+}
+
 async function ib_command(parser, variables, line){
     tokens = line.split(" ");
     switch (tokens[0]) {
@@ -148,6 +156,7 @@ async function ib_command(parser, variables, line){
 }
 
 async function ib_command_for(parser, variables, tokens){
+    variables = ib_scope_map(variables);
     if(tokens.length < 6) return null;
 
     let loopVariables = tokens[1].split(",");
@@ -214,6 +223,7 @@ async function ib_command_for(parser, variables, tokens){
 }
 
 async function ib_command_foreach(parser, variables, tokens){
+    variables = ib_scope_map(variables);
     if(tokens.length < 3) return "null";
 
     let loopVar = tokens[1];
