@@ -1,32 +1,16 @@
-[
-    {
-        "name": "LTS V2",
-        "link": "LTS_V2",
+{
+    "LTS_V2": {
+        "name":"LTS V2",
         "icon": "/src/data/dev/LTS_V2/icon.svg",
+        "languages":"C++",
+        "short":"Circuit simulator",
         "favourite": true
     },
-    {
+    "Piano_Man_GMTK_2020": {
         "name": "Piano Man GMTK 2020",
-        "link": "Piano_Man_GMTK_2020",
         "icon": "/src/data/dev/Piano_Man_GMTK_2020/icon.png",
+        "languages":"C#, Unity",
+        "short":"GMTK 2020 Game Jam Entry",
         "favourite": false
-    },
-    {
-        "name": "LTS_V2",
-        "link": "lts_v2",
-        "icon": "https://picsum.photos/400/300",
-        "favourite": true
-    },
-    {
-        "name": "LTS_V2",
-        "link": "lts_v2",
-        "icon": "https://picsum.photos/400/200",
-        "favourite": true
-    },
-    {
-        "name": "Juan",
-        "link": "lts_v2",
-        "icon": "https://picsum.photos/400/500",
-        "favourite": true
     }
-]
+}

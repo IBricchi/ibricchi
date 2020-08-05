@@ -1,10 +1,20 @@
 let project = window.location.hash;
 
-async function load_page(text){
-    insert_load("#devMain");
+let info = null;
+
+async function load_page(project_name){
+    insert_loading("#devMain");
+
+    if(info == null){
+        info = await ib_get_file("/src/data/dev/dev.json");
+        info = JSON.parse(info);
+    }
     
-    let project = text;
-    if(text == null) project = window.location.hash;
+    let project = project_name;
+    if(project_name == null){
+        project = window.location.hash;
+        project = project.slice(1);
+    }
 
     window.location.hash = project;
 
@@ -12,51 +22,49 @@ async function load_page(text){
         load_def();
     }
     else{
-        load_proj(project.slice(1));
+        load_proj(project);
     }
 }
 
 async function load_proj(name){
-    let info = await ib_get_file("/src/data/dev/"+name+"/info.json");
-    info = JSON.parse(info);
-    
+    if(info[name] == undefined){
+        window.location.replace("/404.html");
+        // console.log("test");
+    }
+
     let variables = {};
-    variables["name"]=info["name"];
-    variables["link"]=info["link"];
-    variables["icon"]=info["icon"];
-    variables["languages"]=info["languages"];
-    variables["short"]=info["short"];
-    variables["long"]=info["long"];
+    variables["name"]=info[name]["name"];
+    variables["project"]=name;
+    variables["icon"]=info[name]["icon"];
+    variables["languages"]=info[name]["languages"];
+    variables["short"]=info[name]["short"];
 
     ib_insert_ib_html("/templates/devProj.html", "#devMain", variables);
 }
 
-async function load_def(){
-    let info = await ib_get_file("/src/data/dev/dev.json");
-    info = JSON.parse(info);
-    
+async function load_def(){    
     let variables = {
         "fav_count": 0,
         "fav_names": [],
-        "fav_links": [],
+        "fav_projects": [],
         "fav_icons": [],
         "count": 0,
         "names": [],
-        "links": [],
+        "projects": [],
         "icons": []
     };
     
-    info.forEach(data => {
+    Object.keys(info).forEach(key => {
         variables["count"]++;
-        variables["names"].push(data["name"]);
-        variables["links"].push(data["link"]);
-        variables["icons"].push(data["icon"]);
+        variables["names"].push(info[key]["name"]);
+        variables["projects"].push(key);
+        variables["icons"].push(info[key]["icon"]);
 
-        if(data["favourite"]){
+        if(info[key]["favourite"]){
             variables["fav_count"]++;
-            variables["fav_names"].push(data["name"]);
-            variables["fav_links"].push(data["link"]);
-            variables["fav_icons"].push(data["icon"]);
+            variables["fav_names"].push(info[key]["name"]);
+            variables["fav_projects"].push(info[key]["link"]);
+            variables["fav_icons"].push(info[key]["icon"]);
         }
     });
 
