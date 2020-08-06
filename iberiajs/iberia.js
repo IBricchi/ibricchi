@@ -1,3 +1,11 @@
+//#region imports
+
+import("./marked.min.js");
+
+//#endregion
+
+//#region control_functions
+
 async function ib_insert_ib_html(path, destination, variables){
     let html = await ib_get_ib_html(path, variables);
     document.querySelector(destination).innerHTML = html;
@@ -95,6 +103,10 @@ async function ib_line(parser, variables, line){
     return ib_html(variables, line);
 }
 
+//#endregion
+
+//#region helper_functions
+
 function ib_string(variables, str){
     let newString = [];
     for(let i = 0; i < str.length; i++){
@@ -135,6 +147,10 @@ function ib_scope_map(variables){
     return newMap;
 }
 
+//#endregion
+
+//#region commands
+
 async function ib_command(parser, variables, line){
     tokens = line.split(" ");
     switch (tokens[0]) {
@@ -149,6 +165,8 @@ async function ib_command(parser, variables, line){
             break;
         case "var":
             return await ib_command_var(parser, variables, tokens);
+        case "md":
+            return await ib_command_md(parser, variables, tokens);
         default:
             return "";
     }
@@ -313,6 +331,22 @@ async function ib_command_var(parser, variables, tokens){
     }
 }
 
+async function ib_command_md(parser, variables, tokens){
+    md = [];
+    let nextLine = parser.advance();
+    while(nextLine != null && nextLine.length > 1  && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+        md.push(await ib_line(parser, variables, nextLine));
+        nextLine = parser.advance();
+    }
+    md = md.join('\n');
+    return marked(md);
+}
+
+
+//#endregion
+
+//#region inline
+
 function ib_html(variables, line){
     let newLine = [];
     for(let i = 0; i < line.length; i++){
@@ -384,3 +418,5 @@ function ib_inline_array(tokens, variables, name){
     if(!(array_index in variables[array_name])) return "null";
     return variables[array_name][array_index];
 }
+
+//#endregion
