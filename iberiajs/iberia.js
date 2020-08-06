@@ -291,7 +291,11 @@ async function ib_command_load(parser, variables, tokens){
 
     switch (loadType) {
         case "ib_html":
-            return ib_get_ib_html(loadPath, variables);
+            return ib_get_ib_html(loadPath, variables)
+        case "ib_md":
+            return marked(await ib_get_ib_html(loadPath, variables));
+        case "md":
+            return marked(await ib_get_file(loadPath));
         default:
             return ib_get_file(loadPath);
     }
@@ -326,6 +330,12 @@ async function ib_command_var(parser, variables, tokens){
             return await ib_pre_process(ib_scope_map(variables), html);
         case "unscoped_ib_html":
             return await ib_pre_process(variables, html);
+        case "ib_md":
+            return marked(await ib_pre_process(ib_scope_map(variables), html));
+        case "unscoped_ib_md":
+            return marked(await ib_pre_process(variables, html));
+        case "md":
+            return marked(html);
         default:
             return html;
     }
