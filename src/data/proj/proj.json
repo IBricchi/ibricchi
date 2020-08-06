@@ -1,14 +1,14 @@
 {
     "LTS_V2": {
         "name":"LTS V2",
-        "icon": "/src/data/dev/LTS_V2/icon.svg",
+        "icon": "/src/data/proj/LTS_V2/icon.svg",
         "languages":"C++",
         "short":"Circuit simulator",
         "favourite": true
     },
     "Piano_Man_GMTK_2020": {
         "name": "Piano Man GMTK 2020",
-        "icon": "/src/data/dev/Piano_Man_GMTK_2020/icon.png",
+        "icon": "/src/data/proj/Piano_Man_GMTK_2020/icon.png",
         "languages":"C#, Unity",
         "short":"GMTK 2020 Game Jam Entry",
         "favourite": false

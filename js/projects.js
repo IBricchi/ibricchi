@@ -2,21 +2,17 @@ let project = window.location.hash;
 
 let info = null;
 
-async function load_page(project_name){
-    insert_loading("#devMain");
+window.addEventListener("hashchange", load_page, false);
+
+async function load_page(){
+    insert_loading("#projMain");
 
     if(info == null){
-        info = await ib_get_file("/src/data/dev/dev.json");
+        info = await ib_get_file("/src/data/proj/proj.json");
         info = JSON.parse(info);
     }
     
-    let project = project_name;
-    if(project_name == null){
-        project = window.location.hash;
-        project = project.slice(1);
-    }
-
-    window.location.hash = project;
+    let project = window.location.hash.slice(1);
 
     if(project == ""){
         load_def();
@@ -28,7 +24,8 @@ async function load_page(project_name){
 
 async function load_proj(name){
     if(info[name] == undefined){
-        window.location.replace("/404.html");
+        console.log("?");
+        //window.location.replace("/404.html");
     }
 
     let variables = new Map();
@@ -38,7 +35,7 @@ async function load_proj(name){
     variables["languages"]=info[name]["languages"];
     variables["short"]=info[name]["short"];
 
-    ib_insert_ib_html("/templates/devProj.html", "#devMain", variables);
+    ib_insert_ib_html("/templates/projDetails.html", "#projMain", variables);
 }
 
 async function load_def(){    
@@ -66,7 +63,7 @@ async function load_def(){
         }
     });
 
-    ib_insert_ib_html("/templates/devDef.html", "#devMain", variables);
+    ib_insert_ib_html("/templates/projOverview.html", "#projMain", variables);
 }
 
-load_page(null);
+load_page();
