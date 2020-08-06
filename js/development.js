@@ -42,16 +42,15 @@ async function load_proj(name){
 }
 
 async function load_def(){    
-    let variables = new Map({
-        "fav_count": 0,
-        "fav_names": [],
-        "fav_projects": [],
-        "fav_icons": [],
-        "count": 0,
-        "names": [],
-        "projects": [],
-        "icons": []
-    });
+    let variables = new Map();
+    variables["fav_count"] = 0;
+    variables["fav_names"] = [];
+    variables["fav_projects"] = [];
+    variables["fav_icons"] = [];
+    variables["count"] = 0;
+    variables["names"] = [];
+    variables["projects"] = [];
+    variables["icons"] = [];
     
     Object.keys(info).forEach(key => {
         variables["count"]++;

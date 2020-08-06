@@ -15,16 +15,6 @@
         </div>
     </header>
     <div class="uk-comment-body">
-        $define loader
-            $define test_scope
-                <p>Scope failing</p>
-            $end_define test_scope
-            <!-- \$load /src/data/dev/#project#/main.html -->
-        $end_define loader
-        $var loader ib_html
-        $var test_scope
-        $for i i < 2 i+=1
-            <p>$i$</p>
-        $end
-        <p>$i$</p>
+        $load /src/data/dev/#project#/main.html ib_html
+    </div>     
 </article>
