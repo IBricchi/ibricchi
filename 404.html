@@ -6,7 +6,6 @@
 
     <link rel="stylesheet" href="uikit-3.5.5/css/uikit.min.css">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
 
     <script src="uikit-3.5.5/js/uikit.min.js"></script>
 
@@ -16,10 +15,10 @@
     <div class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-center">
             <ul class="uk-navbar-nav">
-                <li><a href="/development.html">Development</a></li>
+                <li><a href="/projects/">Projects</a></li>
                 <li><a>Blog</a></li>
-                <a href="#" class="uk-navbar-item uk-logo">
-                    <img src="src/img/logo_1.svg" alt="Logo">
+                <a href="/" class="uk-navbar-item uk-logo">
+                    <img src="/src/img/logo_1.svg" alt="Logo">
                 </a>
                 <li><a>About</a></li>
                 <li><a>Contact</a></li>
@@ -27,7 +26,17 @@
         </div>
     </div>
 
-    <div class="uk-section uk-section-default"></div>
-
+    <h1 style="text-align: center; font-size: 20em;">404</h1>
+    <p style="text-align: center; font-size: medium;">
+        Unfortuantely the page you're looking for could not be found.
+    </p>
+    
+    <script>
+        let loc = window.location.href;
+        loc = loc.substr(loc.length-8);
+        if(loc != "404.html"){
+            window.location.replace("/404.html");
+        }
+    </script>
 </body>
 </html>
