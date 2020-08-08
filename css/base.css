@@ -13,6 +13,10 @@
 	filter: grayscale();
 }
 
+.auto-margin{
+	margin: auto;
+}
+
 .lds-ripple {
 	display: inline-block;
 	position: relative;
