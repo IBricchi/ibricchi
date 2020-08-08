@@ -2,3 +2,8 @@
     display: block;
     margin: auto;
 }
+
+#projMain{
+    padding-top: 0;
+    margin-top: 0;
+}

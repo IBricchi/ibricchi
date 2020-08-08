@@ -1,8 +1,62 @@
-$define test
-$for i i < 5 i+=1
-# $i$
-    $var i
-$end
-$end_define test
+<p class="uk-dropcap">
+LTS V2 is a transient circuit simulator created in C++ designed with ease of use and expandability in
+mind. Apart from the matrix library "Eigen3" everything was written by scratch. This project
+was my final submission for my univeristy course "EIE" at Imperial College of London. Two of
+my classmates and I formed a group to build a circuit simulator in C++. The assignment
+surpassed expectations and recieved a "first" which is the higest mark achieveable. On top of that it was
+awarded the prize of best group project of all first years.
+</p>
 
-$var test ib_md
+<div class="uk-grid uk-child-width-expand@s">
+    <div>
+        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="https://github.com/IBricchi/LTS_V2">
+            <div class="uk-card-badge uk-label">Github</div>
+            <h5 class="uk-card-title"><span class="uk-link-heading">Source Code</span></h5>
+        </a>
+    </div>
+    <div>
+        <a class="gray-out uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body">
+            <div class="uk-card-badge uk-label">N/A</div>
+            <h5 class="uk-card-title"><span class="uk-link-heading">Written Report</span></h5>
+        </a>
+    </div>
+    <div>
+        <a class="gray-out uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="">
+            <div class="uk-card-badge uk-label">N/A</div>
+            <h5 class="uk-card-title"><span class="uk-link-heading">Grade</span></h5>
+        </a>
+    </div>
+</div>
+
+<p>
+This was a school project so I had certain conditions that needed to be met concerning speed of
+exectution and accuracy of results (I have a nice long paper detailing our success with this, 
+but I can't publish it yet since it's still being moderated, I'll put a little link here when it's ready).
+On top of that I wanted the code to be expandable. Waht do I mean by that? Circuit simulators
+require compoennts to be modeled mathematically, however all of these models will unfortuantely have
+some imprecise nature to them, since they're models. This means that the default models supported
+by my program might not be what's required by the final user. Making the code expandable easily
+means that anyone can easily add they're own models and components and not have to worry about,
+the mathematics of the simulation.
+</p>
+
+<p>
+To achieve the expandability of the code polymorphic code was used. Every component is treated identically,
+and a few functions are used as an interface between the circuit (our name for the tranisnt analysis simulator)
+and the compoentns. This was mostly true, there were some cases where we added special treatement, but it was
+mostly for optimisation purposes.
+</p>
+
+<span  class="uk-badge uk-align uk-text-center">
+Normally I would've liked to put a picture of the group working here but unfortunately...
+well... Coronavirus so we didn't actually all work on it at the same time *should've screenshoted
+a skype call oh well...* 
+</span>
+
+<p>
+You know how Coronavirus made life hard for everyone for some time (still is as of writing this) well, 
+it made this project a bit harder aswell. Everyone was at home, so it was a chalenge to work together,
+different time zones, different schedules, ect. As a result the code became a section of modules which
+each work together to form the final product. It ended up being very helpeful as each section is nearly
+independant from the rest so it can be developed and debugged independantly.
+</p>

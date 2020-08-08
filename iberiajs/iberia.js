@@ -229,7 +229,7 @@ async function ib_command_for(parser, variables, tokens){
     while(checkCondition()){
         parser.goto(start);
         let nextLine = parser.advance();
-        while(nextLine != null && nextLine.length > 1  && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+        while(nextLine != null && (nextLine.length < 2 || (nextLine[0] != "$" && nextLine.slice(1).trim() != "end"))){
             html.push(await ib_line(parser, variables, nextLine));
             nextLine = parser.advance();
         }
@@ -273,7 +273,7 @@ async function ib_command_foreach(parser, variables, tokens){
         variables[loopVar] = loopArray[i];
         parser.goto(start);
         let nextLine = parser.advance();
-        while(nextLine != null && nextLine.length > 1  && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+        while(nextLine != null && (nextLine.length < 2 || (nextLine[0] != "$" && nextLine.slice(1).trim() != "end"))){
             html.push(await ib_line(parser, variables, nextLine));
             nextLine = parser.advance();
         }
@@ -306,7 +306,7 @@ async function ib_command_define(parser, variables, tokens){
 
     let html = [];
     let nextLine = parser.advance();
-    while(nextLine != null && nextLine.length > 1 && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end_define " + name)){
+    while(nextLine != null && (nextLine.length < 2 || (nextLine[0] != "$" && nextLine.slice(1).trim() != "end"))){
         html.push(nextLine);
         nextLine = parser.advance();
     }
@@ -338,7 +338,7 @@ async function ib_command_var(parser, variables, tokens){
 async function ib_command_md(parser, variables, tokens){
     md = [];
     let nextLine = parser.advance();
-    while(nextLine != null && nextLine.length > 1  && (nextLine[0] != "$" || nextLine.slice(1).trim() != "end")){
+    while(nextLine != null && (nextLine.length < 2 || (nextLine[0] != "$" && nextLine.slice(1).trim() != "end"))){
         md.push(await ib_line(parser, variables, nextLine));
         nextLine = parser.advance();
     }
