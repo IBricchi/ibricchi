@@ -4,6 +4,10 @@ let info = null;
 
 window.addEventListener("hashchange", load_page, false);
 
+document.querySelector("#nav-projects").addEventListener("click", () => {
+    document.querySelector("#nav-control").checked = false;
+}, false)
+
 async function load_page(){
     insert_loading("#projMain");
 
@@ -24,8 +28,7 @@ async function load_page(){
 
 async function load_proj(name){
     if(info[name] == undefined){
-        console.log("?");
-        //window.location.replace("/404.html");
+        window.location.replace("/404.html");
     }
 
     let variables = new Map();
