@@ -135,6 +135,7 @@
 }
 
 body{
+	position: relative;
 	min-height: 100vh;
 }
 
@@ -142,5 +143,6 @@ body{
 	position: absolute;
 	width: 100vw;
 	bottom: 0;
-	padding: 2% 5% 2% 5%;
+	height: 2.5rem; 
+	padding: 2% 5% 2%;
 }

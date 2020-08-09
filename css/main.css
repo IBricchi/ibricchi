@@ -1,17 +1,3 @@
-#homeAbout>div>img{
-    width: 100%;
-    height: auto;
-    margin: auto;
-}
-
-#main-section{
-    padding: 20px 0;
-}
-
-#main-section h3{
-    text-align: center;
-}
-
 #body{
     background-image: url(/src/img/me.jpg);
     background-color: #09378d;
@@ -19,18 +5,7 @@
 
 #nav{
     padding-bottom: 0;
-}
-
-#main-section{
-    padding-top: 0;
-}
-
-h3, li{
     color: var(--invert-text);
-}
-
-a{
-    color: var(--invert-link)
 }
 
 #nav-toggle{
@@ -39,4 +14,36 @@ a{
 
 #nav-logo{
     filter: invert(1);
+}
+
+#main-section{
+    padding: 5em 0 0 0;
+    color: var(--invert-text);
+    text-align: center;
+}
+
+h1{
+    font-size: 4em;
+    color: var(--invert-text);
+    padding-bottom: 40px;
+}
+
+.text-slider{
+    font-size: 2em;
+    margin: auto;
+}
+
+.text-slider span{
+    background-color: #444444aa;
+    display: block;
+    height: fit-content;
+    width: 0;
+    overflow: hidden;
+    float: left;
+    transition: 0.5s;
+    margin-bottom: 30px;
+}
+
+.text-slider span:first-child{
+    width: 100%;
 }
