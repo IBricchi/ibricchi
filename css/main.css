@@ -11,3 +11,32 @@
 #main-section h3{
     text-align: center;
 }
+
+#body{
+    background-image: url(/src/img/me.jpg);
+    background-color: #09378d;
+}
+
+#nav{
+    padding-bottom: 0;
+}
+
+#main-section{
+    padding-top: 0;
+}
+
+h3, li{
+    color: var(--invert-text);
+}
+
+a{
+    color: var(--invert-link)
+}
+
+#nav-toggle{
+    filter: invert(1);
+}
+
+#nav-logo{
+    filter: invert(1);
+}

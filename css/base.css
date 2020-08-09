@@ -3,7 +3,10 @@
     --dark-bg: #181D27;
     --pop-bg: #3A7D44;
 
-    --main-text: #ffffff;
+	--main-text: #ffffff;
+	--invert-text: #ffffff;
+	--link: #1e87f0;
+	--invert-link: #1ef0b1;
     --pop-text: #69B578;
     
     --pop: #D0DB97;
@@ -131,6 +134,13 @@
 	}
 }
 
+body{
+	min-height: 100vh;
+}
+
 #footer{
-	padding: 5% 5% 2% 5%;
+	position: absolute;
+	width: 100vw;
+	bottom: 0;
+	padding: 2% 5% 2% 5%;
 }
