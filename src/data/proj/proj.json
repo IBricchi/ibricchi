@@ -1,7 +1,7 @@
 {
     "LTS_V2": {
         "name":"LTS V2",
-        "icon": "/src/data/proj/LTS_V2/icon.svg",
+        "icon": "/src/data/proj/LTS_V2/icon.png",
         "languages":"C++",
         "short":"Circuit simulator",
         "favourite": true
