@@ -12,20 +12,23 @@
     <title>IBricchi</title>
 </head>
 <body>
-    <div class="uk-navbar-container" uk-navbar>
-        <div class="uk-navbar-center">
-            <ul class="uk-navbar-nav">
-                <li><a href="/projects/">Projects</a></li>
-                <li><a>Blog</a></li>
-                <a href="/" class="uk-navbar-item uk-logo">
-                    <img src="/src/img/logo_1.svg" alt="Logo">
-                </a>
-                <li><a>About</a></li>
-                <li><a>Contact</a></li>
-            </ul>
-        </div>
-    </div>
-
+    <nav id="nav" class="uk-section uk-section-muted">
+        <input type="checkbox" name="nav-control" id="nav-control" hidden>
+        <a href="/">
+            <img id="nav-logo" src="/src/img/logo_1.svg" alt="Logo">
+        </a>
+        <label for="nav-control">
+            <img id="nav-toggle" src="/src/img/nav.png" alt="Navigation control">
+        </label>
+        <ul id="nav-bar" class="uk-list uk-list-large uk-text-center">
+            <li></li>
+            <a class="uk-link-heading" href="/projects/"><li>Projects</li></a>
+            <a class="uk-link-heading"><li>Blog</li></a>
+            <a class="uk-link-heading"><li>About</li></a>
+            <a class="uk-link-heading"><li>Contact</li></a>
+            <li></li>
+        </ul>
+    </nav>
     <h1 style="text-align: center; font-size: 20em;">404</h1>
     <p style="text-align: center; font-size: medium;">
         Unfortuantely the page you're looking for could not be found.

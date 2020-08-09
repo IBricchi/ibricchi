@@ -9,14 +9,6 @@
     --pop: #D0DB97;
 }
 
-.gray-out{
-	filter: grayscale();
-}
-
-.auto-margin{
-	margin: auto;
-}
-
 .lds-ripple {
 	display: inline-block;
 	position: relative;
@@ -51,5 +43,88 @@
 		width: 100%;
 		height: 100%;
 		opacity: 0;
+	}
+}
+
+.gray-out{
+	filter: grayscale();
+}
+
+.auto-margin{
+	margin: auto;
+}
+
+#nav{
+	text-align: center;
+	width: 100vw;
+	padding: 20px 0;
+}
+
+#nav-logo{
+	width: 50%;
+}
+
+#nav-bar{
+	display: none;
+}
+
+#nav-toggle{
+	width: 40px;
+	height: 40px;
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
+#nav-control:checked ~ #nav-bar{
+	margin: 0;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: #000000c0;
+}
+
+#nav-control:checked ~ #nav-bar li{
+	margin: 0;
+	padding: 10%;
+	font-size: 2em;
+}
+
+#nav-control:checked ~ label img{
+	position: fixed;
+	filter: invert(1);
+	z-index: 1;
+}
+
+@media only screen and (min-width: 640px){
+	#nav #nav-logo{
+		float: left;
+		width: 15%;
+		margin-top: 2%;
+		margin-left: 5%;
+	}
+
+	#nav label{
+		display: none;
+	}
+
+	#nav-bar{
+		float: left;
+		display: block;
+		width: 80%;
+		margin-top: 0;
+	}
+
+	#nav-bar > li{
+		display: none;
+	}
+
+	#nav-bar li{
+		float: left;
+		width: 20%;
+		padding: 5% 0;
 	}
 }

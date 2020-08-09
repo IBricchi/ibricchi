@@ -3,3 +3,11 @@
     height: auto;
     margin: auto;
 }
+
+#main-section{
+    padding: 20px 0;
+}
+
+#main-section h3{
+    text-align: center;
+}
