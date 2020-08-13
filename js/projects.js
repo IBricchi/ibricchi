@@ -12,7 +12,7 @@ async function load_page(){
     insert_loading("#projMain");
 
     if(info == null){
-        info = await ib_get_file("/src/data/proj/proj.json");
+        info = await ib.get_file("/src/data/proj/proj.json");
         info = JSON.parse(info);
     }
     
@@ -28,7 +28,7 @@ async function load_page(){
 
 async function load_proj(name){
     if(info[name] == undefined){
-        window.location.replace("/404.html");
+        // window.location.replace("/404.html");
     }
 
     let variables = new Map();
@@ -38,7 +38,7 @@ async function load_proj(name){
     variables["languages"]=info[name]["languages"];
     variables["short"]=info[name]["short"];
 
-    ib_insert_ib_html("/templates/projDetails.html", "#projMain", variables);
+    ib.insert_ib_html("/templates/projDetails.html", "#projMain", variables);
 }
 
 async function load_def(){    
@@ -66,7 +66,7 @@ async function load_def(){
         }
     });
 
-    ib_insert_ib_html("/templates/projOverview.html", "#projMain", variables);
+    ib.insert_ib_html("/templates/projOverview.html", "#projMain", variables);
 }
 
 load_page();
