@@ -12,5 +12,12 @@
         "languages":"C#, Unity",
         "short":"GMTK 2020 Game Jam Entry",
         "favourite": false
+    },
+    "iberiaJS": {
+        "name": "iberiaJS",
+        "icon": "/src/data/proj/iberiaJS/icon.png",
+        "languages": "JS",
+        "short": "A simple HTML pre-processor for front end JS",
+        "favourite": true
     }
 }
