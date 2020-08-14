@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/src/img/icon2.png"/>
-
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/css/uikit.min.css">
     <link rel="stylesheet" href="/css/base.css">
-    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/contact.css">
 
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/js/uikit-icons.min.js"></script>
-
+    <script src="/js/base.js"></script>
     <title>IBricchi</title>
 </head>
-<body id="body" class="uk-background-cover uk-background-blend-multiply uk-background-primary">
-    <nav id="nav" class="uk-section">
+<body>
+    <nav id="nav" class="uk-section uk-section-muted">
         <input type="checkbox" name="nav-control" id="nav-control" hidden>
-        <a href="#">
+        <a href="/">
             <img id="nav-logo" src="/src/img/logo_1.png" alt="Logo">
         </a>
         <label for="nav-control">
@@ -32,29 +32,26 @@
             <li></li>
         </ul>
     </nav>
-
-    <div id="main-section" class="uk-section">
-        <h1>This is me.</h1>
-        
-        <div id="nationalities" class="text-slider uk-width-4-5 uk-width-1-2@s uk-width-2-5@m uk-width-1-3@l">
-            <span>Argentinian</span>
-            <span>Italian</span>
-            <span>International</span>
+    
+    <div id="main-section" class="uk-section uk-section-muted">
+        <h1 class="uk-heading-large">Contact</h1>
+        <br />
+        <p class="auto-margin uk-text-large uk-width-3-4 uk-width-2-3@m">
+            Feel free to contact me with any enquiries. Send me an email me at my school email. Click bellow to copy it.
+        </p>
+        <div id="email-container" class="auto-margin uk-child-width-1-1 uk-width-1-2@s uk-width-1-3@l" uk-grid>
+            <div>
+                <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" onclick="copy_to_clipboard('ib119@ic.ac.uk')">
+                    <div class="uk-card-badge uk-label">clipboard</div>
+                    <h5 class="uk-card-title"><span class="uk-link-heading">ib119@ic.ac.uk</span></h5>
+                </a>
+            </div>
         </div>
         
-        <div id="about" class="text-slider uk-width-4-5 uk-width-1-2@s uk-width-2-5@m uk-width-1-3@l">
-            <span>Developer</span>
-            <span>Student</span>
-            <span>Creator</span>
-            <span>Human</span>
-        </div>
-    </div>
+    </div>  
 
     <footer id="footer" class="uk-section uk-section-muted">
         <span>©IBricchi 2020</span>
     </footer>
-    
-    <script src="/js/main.js"></script>
-
 </body>
 </html>

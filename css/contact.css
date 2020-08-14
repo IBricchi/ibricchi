@@ -1,0 +1,19 @@
+#main-section{
+    padding-top: 0;
+}
+
+h1{
+    text-align: center;
+}
+
+#email-container{
+    margin-top: 40px;
+}
+
+h5{
+    margin-bottom: 0;
+}
+
+.uk-notification-message{
+    background-color: antiquewhite !important;
+}
