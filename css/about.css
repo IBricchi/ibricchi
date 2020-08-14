@@ -1,0 +1,20 @@
+#main-section{
+    padding: 0 40px 60px 40px;
+}
+
+#moves ul{
+    padding-left: 0;
+}
+
+#moves ul li{
+    display: inline;
+}
+
+#moves ul li:not(:first-child)::before{
+    background-image: url('/src/data/about/air.png');
+    background-size: contain;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    content:"";
+}

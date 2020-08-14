@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="uikit-3.5.5/css/uikit.min.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/css/uikit.min.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/about.css">
 
-    <script src="uikit-3.5.5/js/uikit.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/js/uikit-icons.min.js"></script>
     <title>IBricchi</title>
 </head>
-<body id="body" class="uk-background-cover uk-background-blend-multiply uk-background-primary">
-    <nav id="nav" class="uk-section">
+<body>
+    <nav id="nav" class="uk-section uk-section-muted">
         <input type="checkbox" name="nav-control" id="nav-control" hidden>
-        <a href="#">
+        <a href="/">
             <img id="nav-logo" src="/src/img/logo_1.png" alt="Logo">
         </a>
         <label for="nav-control">
@@ -25,30 +25,249 @@
             <li></li>
             <a class="uk-link-heading" href="/projects/"><li>Projects</li></a>
             <a class="uk-link-heading"><li>Blog</li></a>
-            <a class="uk-link-heading"><li>About</li></a>
+            <a class="uk-link-heading" href="#"><li>About</li></a>
             <a class="uk-link-heading"><li>Contact</li></a>
             <li></li>
         </ul>
     </nav>
 
-    <div id="main-section" class="uk-section">
-        <div class="uk-container">
-            <h3>This is me.</h3>
-            <div class="uk-grid-match uk-child-width-1-3@s uk-child-width-1-4@m" id="homeAbout" uk-grid>
-                <div class="uk-width-expand@s">
-                    <ul class="uk-list uk-list-divider">
-                        <li>Hello! My name is Ignacio Bricchi. I'm a 19 year old Argentinian with a love for all things computers, and this is my portfolio to the world.</li>
-                        <li>Just to get the crutial details out of the way:</li>
-                        <li>I currently attend Imperial College and study Electronic and Information Engineering, achieving and holding a first and recognised in the Deans List for academic excelence</li>
-                        <li>On top of Argentinian nationality I am Italian and hold a Greencard aswell allowing me to work in the EU and in the US respectively</li>
-                        <li>I have had previous job experiences in both multi national coorperations and start ups for computer related work.</li>
-                        <li>Github: <a href="https://github.com/IBricchi">https://github.com/IBricchi</a></li>
-                        <li>LinkedIn: <a href="https://www.linkedin.com/in/ignacio-bricchi-468303141/">https://www.linkedin.com/in/ignacio-bricchi-468303141/</a></li>
-                        <li>More details and references in the <a href="#">About Me</a> section</li>
+    <div id="main-section" class="uk-section uk-section-muted">
+        <ul uk-tab>
+            <li><a href="#">Personal</a></li>
+            <li><a href="#">School</a></li>
+            <li><a href="#">Work Experience</a></li>
+        </ul>
+        <ul class="uk-switcher uk-margin">
+            <li>
+                <h2>Ignacio Bricchi</h2>
+                <hr>
+                <p>
+                    I'm a 19 year old computer enthusisast, studying at Imperial College working his way
+                    towards a degree in Electronic and Information Engineering. Born in Argentina, I've
+                    since traveled the world picking up something new from each country.
+                </p>
+                <div id="moves">
+                    <ul>
+                        <li>Buenos Aires, Argentina  </li>
+                        <li>  Lausanne, Switzerland  </li>
+                        <li>  New Jersy, USA  </li>
+                        <li>  Munich, Germany  </li>
+                        <li>  Georgia, USA  </li>
+                        <li>  Mexico City, Mexico  </li>
+                        <li>  Waterloo Belgium  </li>
+                        <li>  Basel, Switzerland  </li>
+                        <li>  London, UK  </li>
                     </ul>
                 </div>
-            </div>
-        </div>
+                <p>
+                    I started programming at the age of 12, my first expererience was with some simple HTML
+                    and CSS. Then I moved to javastcript, and then just kepth goind. Python, Java, C, C++, C#
+                    and anything I could get my hands on. You can find a link to my projects in the projects tab.
+                    Or on github.
+                </p>
+                <div class="uk-child-width-expand@m" uk-grid>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="/projects/">
+                            <div class="uk-card-badge uk-label">ibricchi</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">Personal Development</span></h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="https://github.com/ibricchi">
+                            <div class="uk-card-badge uk-label">github</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">github</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <p>
+                    Computers aren't everything to me. I'm a first dun blackbelt in taekwondo. I've compeded
+                    european footbal, track and field, and swimming competitions. I love rubiks cubes, and puzzles
+                    of any type.
+                </p>
+            </li>
+            <li>
+                <h2>Imperial College of London</h2>
+                <p>
+                    Currently I am starting my second year of undergraduate studies at Imperial College. I am 
+                    studying Electronic and Information Engineering (EIE), an inbetween course between Electronic
+                    Engineering and Computer Science.
+                </p>
+                <p>
+                    In my first year I achieved a "first", with recognition of the dean's list, meaning I scored
+                    in the top 10% of students in my cohort. Furthermore, the final group project scorred top mark
+                    and earned an award for best first year project.
+                </p>
+                <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+                    <div>
+                        <a class="gray-out uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body">
+                            <div class="uk-card-badge uk-label">N/A</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">First year transcript</span></h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="gray-out uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body">
+                            <div class="uk-card-badge uk-label">N/A</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">Proof of awards</span></h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="/projects/#LTS_V2">
+                            <div class="uk-card-badge uk-label">IBricchi</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">Project page</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <p>
+                    As an Imperial EIE student, my course focuses on teaching the fundamental of computer-archetecture, and
+                    low-level programming. In the first year we built a simple CPU design from scratch, aswell as created
+                    programmes for it.
+                </p>
+                <h2>IB Diploma</h2>
+                <p>
+                    The International Bachaleaureate (IB) diploma is a highschool diploma, achnowledged ny many to be one
+                    of the most rigurous internationalhighschool diplomans out there. I studdied 4 courses at higher level
+                    (HL), this level covers university level material. The HL courses were Math, Physics, Chemistry, and
+                    Economics. I recieved the scores of 7, 7, 7, and 6 respectfully for each of the courses, where 7 is the
+                    highest mark achievable.
+                </p>
+                <p>
+                    At standard level (SL), a slightly lower level, pre-univiery level material, I studdied English Language
+                    and Literature, and Spanish Language and Literature. This allowed me to receive a bi-lingual diploma
+                    aknowledging my fluency in both English and Spanish. I receieved a 6, and a 5 respectfully for the courses. 
+                </p>
+                <p>
+                    Overall my diploma ended up with 40 points, with a maximum of 45 points. This includes the course points,
+                    aswell as 2 of 3 points for the core IB programme, Theory of Knowledge (TOK), Creativity Activity Service
+                    (CAS), and the Extended Essay (EE). TOK is a course about learning to learn, it encourages you to explore
+                    what exactly knowledge is, and acts as a semi philopohy course. CAS is a requirement by the IB, to engage
+                    not only in academics, but to do an Active, a Service, and a Cretaive activity throught the program.
+                    Finally the EE, is a 4000 word investigation into a subject of choice. I chose chemistry, and explored
+                    how different processes could increase the efficicency of the production of higdrogen through electrolysis.
+                </p>
+                <div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid>
+                    <div>
+                        <a class="gray-out uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body">
+                            <div class="uk-card-badge uk-label">N/A</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">IB diploma</span></h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="/src/data/about/Extended Essay.pdf">
+                            <div class="uk-card-badge uk-label">ibricchi.com</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">EE</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <p>
+            </li>
+            <li>
+                <h2>My Work Experience</h2>
+                <p>
+                    I've been having work expereriences in real companies since the age of 16. Mainly with software
+                    development. You can grab a copy of my CV.
+                </p>
+                <div class="uk-child-width-1-2@s uk-child-width-1-3@l" uk-grid>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="/src/data/about/cv.pdf">
+                            <div class="uk-card-badge uk-label">ibricchi</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">CV</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <h2>oesia</h2>
+                <div class="uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="https://grupooesia.com/">
+                            <div class="uk-card-badge uk-label">oesia.com</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">oesia home page</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <p>
+                    OESIA is a multi-national coorperation based in Madrid Spain. During the summer
+                    of 2018, I was employed there for an internship. My duties were to automate a system
+                    for identifieng employees who's work could potentially apply for goverment sanctioned
+                    tax-breaks for the company. The sytem would also allow for easy collection of data
+                    to to proove that the employee did infact apply for tax-breaks, in the event of an audit.
+                </p>
+                <div class="auto-margin uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-width-1-4l">
+                    <img src="https://aecconsultoras.com/wp-content/uploads/2020/01/logo-asociados-oesia.jpg" alt="OESIA logo">
+                    <span>oesia logo</span>
+                </div>
+                <p>
+                    The company had a heavy emphasis on inovation. The government of spain recenlty had
+                    created a new law, decreasing the ammount of social-secuirty a company had to pay to the
+                    government for workers who worked in a project which fell under certain guidelens to do with
+                    techonolical inovation. As such the company, could largely benefit from taking advantage of
+                    this law.
+                </p>
+                <p>
+                    Using a combination of data from human resources, employee work hours, project lists, etc.
+                    I devised a system which would identify known emplyees who had already been marked as
+                    able to take advantage of the new law, and through extrapolation found projects, which
+                    could be considered "invoative", and generated a list of potential candidates.
+                </p>
+                <p>
+                    This system massively decreased the list of potential candidates down to a managable list.
+                    And sorted them from most-likely to apply to least likely. A human could go through, see the
+                    evidence collected, recieve identification information to look for more proof, and then either
+                    accept, or decline them.
+                </p>
+                <p>
+                    Once in the system, automated emails would be sent to those who were deemed able to apply
+                    for the tax cuts, to submit evidence of work. A small amount of checking was automated to
+                    ensure that the information was valid, however, all information had to be vetted by someone,
+                    just to ensure that there was valid proof of work.
+                </p>
+                <p>
+                    Unfortunately I am unable to provide any of the code for this project, as I was not allowed to
+                    keep a copy of it, nor would I have been allowed to publish it.
+                </p>
+                <h2>Borro</h2>
+                <div class="uk-child-width-1-2@m uk-child-width-1-3@l" uk-grid>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="https://borro.com">
+                            <div class="uk-card-badge uk-label">borro.com</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">Borro home page</span></h5>
+                        </a>
+                    </div>
+                    <div>
+                        <a class="uk-display-block uk-link-toggle uk-card uk-card-default uk-card-body" href="https://www.multichain.com">
+                            <div class="uk-card-badge uk-label">multichain.com</div>
+                            <h5 class="uk-card-title"><span class="uk-link-heading">Multichain</span></h5>
+                        </a>
+                    </div>
+                </div>
+                <p>
+                    Borro, is a London based financial statrtup working with high value asset based lending.
+                    Durring the summer of 2017 I was epmployed to run an experiment using blockchain as a
+                    potential new financial ledger for the company. The technology would allow for permanent
+                    financial records, it would increase trust in the records, and for a company dealing with
+                    large assets such as Borro, increasing trust is no small matter.
+                </p>
+                <div class="auto-margin uk-card uk-card-default uk-card-body uk-width-1-2@s uk-width-1-3@m uk-width-1-4l">
+                    <img src="https://borro.com/wp-content/uploads/elementor/thumbs/big-Borro-RGB-ojgrvjk9qsn355da7y0prsj46gnmstooahqseryyyw.png" alt="Borro logo">
+                    <span>Borro logo</span>
+                </div>
+                <p>
+                    Using multichain (a software which allows creation and usage of a block chain), I created
+                    a small local blockchain server. Around it I created a webserver using Java, PHP, and JS, in
+                    the end I created a simple web page which allowed a simple user interface to read, and write
+                    into the financial ledger. It had querying abilities, for reading, and would check information
+                    written into it before committing anything into the ledger, ensuring all information was
+                    correct, as far as it could tell.
+                </p>
+                <p>
+                    Towards the end of the project a small report was written on the findings, and in the end the
+                    company decided not to go with the block chain proposal, the current system was good enough,
+                    and it was deemed an unnessary addition.
+                </p>
+                <p>
+                    I am unable to share any of the code during the project due to not being able to take a copy, after
+                    the internship.
+                </p>
+            </li>
+        </ul>        
     </div>
 
     <footer id="footer" class="uk-section uk-section-muted">

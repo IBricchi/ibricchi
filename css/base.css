@@ -137,12 +137,13 @@
 body{
 	position: relative;
 	min-height: 100vh;
+	overflow-x: hidden;
 }
 
 #footer{
 	position: absolute;
 	width: 100vw;
 	bottom: 0;
-	height: 2.5rem; 
+	height: 3.5rem; 
 	padding: 2% 5% 2%;
 }
