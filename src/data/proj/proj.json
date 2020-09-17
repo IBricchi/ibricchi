@@ -1,4 +1,11 @@
 {
+    "iglu": {
+        "name":"iglu",
+        "icon": "/src/data/proj/iglu/icon.png",
+        "languages": "C++",
+        "short": "Programming Language",
+        "favourite": true
+    },
     "LTS_V2": {
         "name":"LTS V2",
         "icon": "/src/data/proj/LTS_V2/icon.png",

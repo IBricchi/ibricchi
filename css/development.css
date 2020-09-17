@@ -3,6 +3,15 @@
     margin: auto;
 }
 
+.basic-dev-card h3{
+    text-align: center;
+}
+
+.basic-dev-card p{
+    margin: 0;
+    text-align: center;
+}
+
 #projMain{
     padding-top: 0;
     margin-top: 0;

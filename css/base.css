@@ -49,6 +49,10 @@
 	}
 }
 
+html{
+	background-color: #f8f8f8;
+}
+
 .gray-out{
 	filter: grayscale();
 }
@@ -107,7 +111,7 @@
 @media only screen and (min-width: 640px){
 	#nav #nav-logo{
 		float: left;
-		width: 15%;
+		width: 20%;
 		margin-top: 2%;
 		margin-left: 5%;
 	}
@@ -119,7 +123,7 @@
 	#nav-bar{
 		float: left;
 		display: block;
-		width: 80%;
+		width: 75%;
 		margin-top: 0;
 	}
 
@@ -129,8 +133,8 @@
 
 	#nav-bar li{
 		float: left;
-		width: 20%;
-		padding: 5% 0;
+		width: 33%;
+		padding: 8% 0;
 	}
 }
 
