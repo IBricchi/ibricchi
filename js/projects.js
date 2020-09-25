@@ -47,11 +47,13 @@ async function load_def(){
     variables["fav_names"] = [];
     variables["fav_projects"] = [];
     variables["fav_icons"] = [];
+    variables["fav_sources"] = [];
     variables["fav_shorts"] = [];
     variables["count"] = 0;
     variables["names"] = [];
     variables["projects"] = [];
     variables["icons"] = [];
+    variables["sources"] = [];
     variables["shorts"] = [];
     
     Object.keys(info).forEach(key => {
@@ -59,6 +61,7 @@ async function load_def(){
         variables["names"].push(info[key]["name"]);
         variables["projects"].push(key);
         variables["icons"].push(info[key]["icon"]);
+        variables["sources"].push(info[key]["source"]);
         variables["shorts"].push(info[key]["short"]);
 
         if(info[key]["favourite"]){
@@ -66,6 +69,7 @@ async function load_def(){
             variables["fav_names"].push(info[key]["name"]);
             variables["fav_projects"].push(info[key]["link"]);
             variables["fav_icons"].push(info[key]["icon"]);
+            variables["fav_sources"].push(info[key]["source"]);
             variables["fav_shorts"].push(info[key]["short"]);
         }
     });

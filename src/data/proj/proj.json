@@ -4,6 +4,7 @@
         "icon": "/src/data/proj/iglu/icon.png",
         "languages": "C++",
         "short": "Programming Language",
+        "source": "http://github.com/IBricchi/iglu",
         "favourite": true
     },
     "LTS_V2": {
@@ -11,13 +12,15 @@
         "icon": "/src/data/proj/LTS_V2/icon.png",
         "languages":"C++",
         "short":"Circuit simulator",
+        "source": "http://github.com/IBricchi/LTS_V2",
         "favourite": true
     },
     "Piano_Man_GMTK_2020": {
         "name": "Piano Man GMTK 2020",
         "icon": "/src/data/proj/Piano_Man_GMTK_2020/icon.png",
         "languages":"C#, Unity",
-        "short":"GMTK 2020 Game Jam Entry",
+        "short": "GMTK 2020 Game Jam Entry",
+        "source": "http://github.com/IBricchi/PianoMan",
         "favourite": false
     },
     "iberiaJS": {
@@ -25,6 +28,7 @@
         "icon": "/src/data/proj/iberiaJS/icon.png",
         "languages": "JS",
         "short": "A simple HTML pre-processor for front end JS",
+        "source": "http://github.com/IBricchi/iberiajs",
         "favourite": true
     }
 }
