@@ -59,6 +59,10 @@ h1{
     margin: 2% 0 0 calc((100vw - 50px * 3)/2);
 }
 
+#socialButtonsSmall a:hover, #socialButtonsLarge a:hover{
+    text-decoration: none;
+}
+
 @media only screen and (min-width: 640px){
     #main-section{
         padding-top: 6em;
