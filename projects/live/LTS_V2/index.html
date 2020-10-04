@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LTS_V2 live demo</title>
+    
+    <script src="first.js"></script>
+
+    <script src="LTS_V2.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.min.js"></script>
+
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/css/uikit.min.css" />
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.8/dist/js/uikit-icons.min.js"></script>
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="main.css">
+    
+</head>
+<body>
+
+    <nav id="nav" class="uk-section">
+        <input type="checkbox" name="nav-control" id="nav-control" hidden>
+        <a href="#">
+            <img id="nav-logo" src="/src/img/logo_1.png" alt="Logo">
+        </a>
+        <label for="nav-control">
+            <img id="nav-toggle" src="/src/img/nav.png" alt="Navigation control">
+        </label>
+        <ul id="nav-bar" class="uk-list uk-list-large uk-text-center">
+            <li></li>
+            <a class="uk-link-heading" href="/projects/"><li>Projects</li></a>
+            <a class="uk-link-heading" href="/about/"><li>About</li></a>
+            <a class="uk-link-heading" href="/contact/"><li>Contact</li></a>
+            <li></li>
+        </ul>
+    </nav>
+    
+    <div id="container" class="uk-grid uk-child-width-1-2@m">
+        <div id="inputContainer">
+            <textarea id="input">
+Example Circuit
+* Comment example
+R1 N001 0 10k
+R2 N001 N002 10k
+V1 N0002 0 SIN(5 5 10)
+*
+.tran 1m 0.5
+.options gmin=1p abstol=0.01 imax=1000
+.END
+            </textarea>
+        </div>
+        
+        <div id="chartContainer">
+            <canvas id="chart"></canvas>
+        </div>
+    </div>
+    <div id="buttonContainer">
+        <button onclick="runLTS()">RUN</button>            
+    </div>
+
+    <footer id="footer" class="uk-section uk-section-muted">
+        <span>©IBricchi 2020</span>
+        <a href="/projects/#LTS_V2"><button class="uk-button uk-button-small uk-button-secondary">Learn More</button></a>
+    </footer>
+
+</body>
+
+<script src="main.js"></script>
+
+</html>
