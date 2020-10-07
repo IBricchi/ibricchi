@@ -4,14 +4,16 @@
         "icon": "/src/data/proj/iglu/icon.png",
         "languages": "C++",
         "short": "Programming Language",
+        "live": null,
         "source": "http://github.com/IBricchi/iglu",
         "favourite": true
     },
     "LTS_V2": {
         "name":"LTS V2",
         "icon": "/src/data/proj/LTS_V2/icon.png",
-        "languages":"C++",
+        "languages":"C++, WebAssembly",
         "short":"Circuit simulator",
+        "live": "LTS_V2",
         "source": "http://github.com/IBricchi/LTS_V2",
         "favourite": true
     },
@@ -20,6 +22,7 @@
         "icon": "/src/data/proj/Piano_Man_GMTK_2020/icon.png",
         "languages":"C#, Unity",
         "short": "GMTK 2020 Game Jam Entry",
+        "live": null,
         "source": "http://github.com/IBricchi/PianoMan",
         "favourite": false
     },
@@ -28,6 +31,7 @@
         "icon": "/src/data/proj/iberiaJS/icon.png",
         "languages": "JS",
         "short": "A simple HTML pre-processor for front end JS",
+        "live": null,
         "source": "http://github.com/IBricchi/iberiajs",
         "favourite": true
     }

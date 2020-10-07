@@ -36,6 +36,8 @@ async function load_proj(name){
     variables["project"]=name;
     variables["icon"]=info[name]["icon"];
     variables["languages"]=info[name]["languages"];
+    variables["source"]=info[name]["source"];
+    variables["live"]=info[name]["live"];
     variables["short"]=info[name]["short"];
 
     ib.insert_ib_html("/templates/projDetails.html", "#projMain", variables);
@@ -48,12 +50,16 @@ async function load_def(){
     variables["fav_projects"] = [];
     variables["fav_icons"] = [];
     variables["fav_sources"] = [];
+    variables["fav_lives"] = [];
+    variables["fav_lives_count"] = [];
     variables["fav_shorts"] = [];
     variables["count"] = 0;
     variables["names"] = [];
     variables["projects"] = [];
     variables["icons"] = [];
     variables["sources"] = [];
+    variables["lives"] = [];
+    variables["lives_count"] = [];
     variables["shorts"] = [];
     
     Object.keys(info).forEach(key => {
@@ -62,6 +68,9 @@ async function load_def(){
         variables["projects"].push(key);
         variables["icons"].push(info[key]["icon"]);
         variables["sources"].push(info[key]["source"]);
+        let live = info[key]["live"];
+        variables["lives"].push(live);
+        variables["lives_count"].push(live==null?0:1);
         variables["shorts"].push(info[key]["short"]);
 
         if(info[key]["favourite"]){
@@ -70,11 +79,13 @@ async function load_def(){
             variables["fav_projects"].push(info[key]["link"]);
             variables["fav_icons"].push(info[key]["icon"]);
             variables["fav_sources"].push(info[key]["source"]);
+            variables["fav_lives"].push(live);
+            variables["fav_lives_count"].push(live==null?0:1);
             variables["fav_shorts"].push(info[key]["short"]);
         }
     });
 
-    ib.insert_ib_html("/templates/projOverview.html", "#projMain", variables);
+    ib.insert_ib_html("/templates/projOverview.xhtml", "#projMain", variables);
 }
 
 load_page();
