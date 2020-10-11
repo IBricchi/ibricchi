@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="/src/img/icon2.png"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/src/img/icon2.png "/>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/css/uikit.min.css">
-    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="/css/base.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.6/dist/js/uikit-icons.min.js"></script>
@@ -15,12 +15,12 @@
 </head>
 <body>
     <nav id="nav" class="uk-section uk-section-muted">
-        <input type="checkbox" name="nav-control" id="nav-control" hidden>
+        <input type="checkbox" name="nav-control" id="nav-control" hidden="" />
         <a href="/">
-            <img id="nav-logo" src="/src/img/logo_1.png" alt="Logo">
+            <img id="nav-logo" src="/src/img/logo_1.png" alt="Logo" />
         </a>
         <label for="nav-control">
-            <img id="nav-toggle" src="/src/img/nav.png" alt="Navigation control">
+            <img id="nav-toggle" src="/src/img/nav.png" alt="Navigation control" />
         </label>
         <ul id="nav-bar" class="uk-list uk-list-large uk-text-center">
             <li></li>
@@ -41,9 +41,9 @@
     
     <script>
         let loc = window.location.href;
-        loc = loc.substr(loc.length-8);
-        if(loc != "404.html"){
-            window.location.replace("/404.html");
+        loc = loc.substr(loc.length-9);
+        if(loc != "404.xhtml"){
+            window.location.replace("/404.xhtml");
         }
     </script>
 </body>

@@ -53,6 +53,14 @@ html{
 	background-color: #f8f8f8;
 }
 
+body::-webkit-scrollbar{
+	display: none;
+}
+body{
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
 .gray-out{
 	filter: grayscale();
 }

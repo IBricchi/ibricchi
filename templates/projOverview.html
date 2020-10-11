@@ -13,11 +13,11 @@
                         <li>
                             <a href="#sources->get->i#" class="uk-icon-button uk-icon-link" uk-icon="icon: github; ratio: 2.5"></a>
                         </li>
+                        $for j j < #lives_count->get->i# j+=1$
                         <li>
-                            $for j j < #lives_count->get->i# j+=1$
                             <a href="/projects/live/#lives->get->i#" class="uk-icon-button uk-icon-link" uk-icon="icon: play; ratio: 2.5"></a>
-                            $end$
                         </li>
+                        $end$
                     </ul>
                 </div>
             </div>

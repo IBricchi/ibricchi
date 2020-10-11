@@ -38,6 +38,7 @@ async function load_proj(name){
     variables["languages"]=info[name]["languages"];
     variables["source"]=info[name]["source"];
     variables["live"]=info[name]["live"];
+    variables["live_count"]=info[name]["live"]==null?0:1;
     variables["short"]=info[name]["short"];
 
     ib.insert_ib_html("/templates/projDetails.html", "#projMain", variables);
@@ -85,7 +86,7 @@ async function load_def(){
         }
     });
 
-    ib.insert_ib_html("/templates/projOverview.xhtml", "#projMain", variables);
+    ib.insert_ib_html("/templates/projOverview.html", "#projMain", variables);
 }
 
 load_page();
