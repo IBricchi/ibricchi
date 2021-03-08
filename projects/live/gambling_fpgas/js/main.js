@@ -10,7 +10,7 @@ async function get_data(setup) {
     console.log(setup);
 
     let response = await fetch(setup.data_url, {
-        body: setup.data,
+        // body: setup.data,
         headers: setup.headers,
         method: setup.request
     });
