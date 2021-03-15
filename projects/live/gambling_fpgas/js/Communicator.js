@@ -1,7 +1,7 @@
 class Communicator {
     username = "";
 
-    serverIP = "http://18.132.52.158:3000";
+    serverIP = "https://18.132.52.158:3000";
 
     checkCredUrl = this.serverIP + "/isAuthorised";
     // checkCredUrl = "./testCheck.json";
