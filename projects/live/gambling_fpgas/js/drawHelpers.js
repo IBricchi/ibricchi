@@ -171,7 +171,7 @@ function drawPlayerCard(game, player, x, y, turn) {
     // draw two cards
     let card1 = "back";
     let card2 = "back";
-    if (player.showCardsEveryone && player.name != game.me.name) {
+    if (player.hand != null && player.name != game.me.name) {
         card1 = player.hand[0];
         card2 = player.hand[1];
     }
@@ -214,7 +214,7 @@ function drawPlayerCard(game, player, x, y, turn) {
 
     translate(-avaiablex, 0);
 
-    if (player.hadFolded) {
+    if (player.hasFolded) {
         noStroke();
         fill(ds.pfoldc);
         rect(ds.playercw / 2, ds.playerch / 2, ds.playercw, ds.playerch);

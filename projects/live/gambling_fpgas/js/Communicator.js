@@ -1,4 +1,6 @@
 class Communicator {
+    debug = false;
+
     username = "";
 
     serverIP = "http://18.132.52.158:3000";
@@ -37,8 +39,7 @@ class Communicator {
         this.terminateGameRequest.headers.Authorization = auth;
     }
 
-    openGameUrl = this.serverIP + "/poker/openGameStatus";
-    // openGameUrl = "./testOpen.json";
+    openGameUrl = this.debug ? openGameUrl = "./testOpen.json" : (this.serverIP + "/poker/openGameStatus");
     openGameRequest = {
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
@@ -103,8 +104,8 @@ class Communicator {
     async sendJoin() {
         return fetch(this.sendJoinUrl, this.sendJoinRequest)
             .catch(err => {
-                console.error(err);
-                console.error("Communicator: Unable to join game.");
+                console.warn(err);
+                console.warn("Communicator: Unable to join game.");
             })
     }
 
@@ -129,13 +130,12 @@ class Communicator {
                 }
             })
             .catch(err => {
-                console.error(err);
-                console.error("Communicator: Unable to start game.");
+                console.warn(err);
+                console.warn("Communicator: Unable to start game.");
             })
     }
 
-    activeGameUrl = this.serverIP + "/poker/activeGameStatus";
-    // activeGameUrl = "./testActive.json";
+    activeGameUrl = this.debug ? "./testActive.json" : (this.serverIP + "/poker/activeGameStatus");
     activeGameRequest = {
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
@@ -154,6 +154,27 @@ class Communicator {
                 console.warn("Communicator: Unable to fetch data from ", this.activeGameUrl);
                 return false
             });
+    }
+
+    showdownUrl = this.debug ? "./testShowdown.json" : (this.serverIP + "/poker/activeGameStatus/showdown");
+    showdownRequest = {
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+        method: "GET"
+    };
+    /*
+         curl http://test:test@localhost:3000/poker/activeGameStatus/showdown
+    */
+    async getShowdown() {
+        return fetch(this.showdownUrl, this.showdownRequest)
+            .then(request => request.json())
+            .then(data => { return data })
+            .catch(err => {
+                console.warn(err);
+                console.warn("Communicator: Unable to fetch data from ", this.showdownUrl);
+                return false;
+            })
     }
 
     terminateGameUrl = this.serverIP + "/poker/terminateGame"
