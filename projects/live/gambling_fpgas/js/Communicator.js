@@ -5,8 +5,7 @@ class Communicator {
 
     serverIP = "http://18.132.52.158:3000";
 
-    checkCredUrl = this.serverIP + "/isAuthorised";
-    // checkCredUrl = "./testCheck.json";
+    checkCredUrl = this.debug ? "./testCheck.json" : (this.serverIP + "/isAuthorised");
     checkCredRequest = {
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
@@ -35,11 +34,13 @@ class Communicator {
         this.sendOpenGameRequest.headers.Authorization = auth;
         this.sendJoinRequest.headers.Authorization = auth;
         this.sendStartRequest.headers.Authorization = auth;
-        this.activeGameRequest.headers.Authorization = auth
+        this.activeGameRequest.headers.Authorization = auth;
+        this.showdownRequest.headers.Authorization = auth;
+        this.continueGameRequest.headers.Authorization = auth;
         this.terminateGameRequest.headers.Authorization = auth;
     }
 
-    openGameUrl = this.debug ? openGameUrl = "./testOpen.json" : (this.serverIP + "/poker/openGameStatus");
+    openGameUrl = this.debug ? "./testOpen.json" : (this.serverIP + "/poker/openGameStatus");
     openGameRequest = {
         headers: {
             "Content-Type": "application/json; charset=UTF-8"
@@ -106,7 +107,7 @@ class Communicator {
             .catch(err => {
                 console.warn(err);
                 console.warn("Communicator: Unable to join game.");
-            })
+            });
     }
 
     sendStartUrl = this.serverIP + "/poker/startGame";
@@ -132,7 +133,7 @@ class Communicator {
             .catch(err => {
                 console.warn(err);
                 console.warn("Communicator: Unable to start game.");
-            })
+            });
     }
 
     activeGameUrl = this.debug ? "./testActive.json" : (this.serverIP + "/poker/activeGameStatus");
@@ -164,7 +165,7 @@ class Communicator {
         method: "GET"
     };
     /*
-         curl http://test:test@localhost:3000/poker/activeGameStatus/showdown
+         curl http://test:test@18.132.52.158:3000/poker/activeGameStatus/showdown
     */
     async getShowdown() {
         return fetch(this.showdownUrl, this.showdownRequest)
@@ -174,7 +175,27 @@ class Communicator {
                 console.warn(err);
                 console.warn("Communicator: Unable to fetch data from ", this.showdownUrl);
                 return false;
-            })
+            });
+    }
+
+    continueGameUrl = this.serverIP + "/poker/startNewGameSamePlayers";
+    continueGameRequest = {
+        headers: {
+            "Content-Type": "application/json; charset=UTF-8"
+        },
+        method: "POST"
+    };
+    /*
+        curl --header "Content-Type: application/json; charset=UTF-8" \
+            --request POST \
+            http://test:test@localhost:3000/poker/startNewGameSamePlayers
+    */
+    async sendContinueGame() {
+        return fetch(this.continueGameUrl, this.continueGameRequest)
+            .catch(err => {
+                console.warn(err);
+                console.warn("Communiator: Unable to continue game from: " + this.continueGameUrl);
+            });
     }
 
     terminateGameUrl = this.serverIP + "/poker/terminateGame"
@@ -194,7 +215,7 @@ class Communicator {
             .catch(err => {
                 console.warn(err);
                 console.warn("Communicator: Unable to terminate game to ", this.terminateGameUrl);
-            })
+            });
     }
 
 }

@@ -2,20 +2,29 @@
 class GameSettings {
     refreshRate = 1000;
 
+    state;
+
+    lobby;
+
+    availableMovesLength = 0;
+
     comm = {};
     intervalGet;
 
     me = {};
     players = [];
+    winners = [];
 
     communityCards;
     currentPlayer;
     currentPot;
     currentRound;
+    winningPots;
     winningReason;
 
     constructor(comm) {
         this.comm = comm;
+        this.state = "login"
     }
 
     start() {
@@ -34,24 +43,32 @@ class GameSettings {
     }
 
     processOpen(data) {
-        // data.active = true;
+        this.state = "open"
         if (form.name != "OPEN" && !data.open) {
             removeForm();
+            removeLobby();
             createOpenForm();
             removeTerminate();
         }
         if (form.name != "JOIN" && data.open && (data.players == null || !data.players.some(element => element.name == comm.username))) {
             removeForm();
+            createLobby();
             createJoinForm();
             createTerminate();
         }
         if (form.name != "START" && data.players != null && data.players.some(element => element.name == comm.username)) {
             removeForm();
+            createLobby();
             createStartForm();
             createTerminate();
         }
+        if (data.open) {
+            createLobby();
+            lobby.updatePlayers(data.players);
+        }
         if (data.active) {
             removeForm();
+            removeLobby();
             canvas.show();
             loop();
             clearInterval(this.intervalGet);
@@ -72,13 +89,14 @@ class GameSettings {
     }
 
     processActive(data) {
-        // if (data.hasEnded) {
-        //     clearInterval(this.intervalGet);
-        //     let t = this;
-        //     t.updateShowdown();
-        //     this.intervalGet = setInterval(() => { t.updateShowdown() }, t.refreshRate);
-        //     createTerminate();
-        // }
+        this.state = "active";
+        if (data.hasEnded) {
+            clearInterval(this.intervalGet);
+            let t = this;
+            t.updateShowdown();
+            this.intervalGet = setInterval(() => { t.updateShowdown() }, t.refreshRate);
+            createTerminate();
+        }
         if (!data.active) {
             canvas.hide();
             noLoop();
@@ -93,6 +111,10 @@ class GameSettings {
         this.currentPot = 0;
         this.me = {};
         this.players = [];
+        this.leaglMoves = data.availableNextMoves;
+
+        updateLeaglMoves(this, data.availableNextMoves);
+
         for (let i = 0; i < data.players.length; i++) {
             let player = data.players[i];
             this.currentPot += player.totalMoneyBetAmount;
@@ -115,7 +137,10 @@ class GameSettings {
     }
 
     processShowdown(data) {
-        if (data.gameStarted) {
+        this.state = "showdown"
+        createContinueGame();
+        if (data.newGameStarted) {
+            removeContinueGame();
             clearInterval(this.intervalGet);
             let t = this;
             t.updateActive();
@@ -133,7 +158,9 @@ class GameSettings {
         }
         this.communityCards = data.communityCards;
         this.players = [];
+        this.winners = [];
         this.winningReason = data.winningReason;
+        this.winningPots = data.winningMoneyAmounts;
         this.currentPot = data.potMoneyAmount;
         let k = 0;
         for (let i = 0; i < data.players.length; i++) {
@@ -143,8 +170,9 @@ class GameSettings {
             for (let j = 0; j < data.winners.length; j++) {
                 if (player.name == data.winners[j].name) {
                     player.winnerOrder = k;
-                    k++;
                     player.winner = true;
+                    this.winners.push(player);
+                    k++;
                 }
             }
             if (player.name == comm.username) {
