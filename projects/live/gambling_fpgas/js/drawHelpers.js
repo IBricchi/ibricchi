@@ -198,7 +198,7 @@ function drawMoneyBar(winners, pots, pot, x, y) {
         fill(ds.playerc[winners[i].order]);
         rect(0, avaiabley, ds.winnerbw, ds.winnerbh * pots[i] / pot);
         out.push(avaiabley + ds.winnerbh * pots[i] / pot / 2);
-        avaiabley += pots[i];
+        avaiabley += ds.winnerbh * pots[i] / pot;
     }
 
     pop();
